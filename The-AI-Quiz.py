@@ -2,6 +2,7 @@ from tkinter import messagebox
 import tkinter as tk
 from tkinter import *
 import string
+import random
 
 # Functions
 def open_about_page():
@@ -15,8 +16,17 @@ def on_checkbox():
         print("Checkbox is checked!")
     else:
      print("Checkbox is unchecked!")
-     
+    
+def show_text():
+    print("You typed:", entry.get())
 
+def check_answer():
+    user_input_text = entry.get().strip() 
+    if user_input_text == "XMYVN6W5":
+        open_about_page()
+    else:
+        show_frame(AI_box)
+    
 
 # Homepage
 root = tk.Tk()
@@ -33,9 +43,12 @@ main_frame = tk.Frame(root, bg="#f0f0f0")
 quiz1_frame = tk.Frame(root, bg="#e0f7fa")
 quiz2_frame = tk.Frame(root, bg="#e0f7fa")
 AI_box = tk.Frame(root, bg="#ff8e8e")
+word_frame = tk.Frame(root, bg="#d9d9d9")
 
-for frame in (main_frame, AI_box, quiz1_frame, quiz2_frame):
+for frame in (main_frame, AI_box, quiz1_frame, quiz2_frame, word_frame):
     frame.grid(row=0, column=0, sticky='nsew')
+
+show_frame(main_frame)
 
 # Main Buttons
 title_label = tk.Label(main_frame, text="The-AI-Quiz!", font=("Helvetica", 18, "bold"), bg="#f0f0f0")
@@ -54,11 +67,11 @@ exit_button = tk.Button(main_frame, text="Exit", width=15, command=root.destroy)
 exit_button.pack(pady=5)
 
 # Quiz1 Buttons
-quiz1_label = tk.Label(quiz1_frame, text="Verify if you're Human or AI:", font=("Helvetica", 14, "bold"), bg="#e0f7fa")
+quiz1_label = tk.Label(quiz1_frame, text="I'm not a robot:", font=("Helvetica", 14, "bold"), bg="#e0f7fa")
 quiz1_label.pack(pady=20)
 
 checked = tk.BooleanVar()
-checkbox = tk.Checkbutton(quiz1_frame, text="Check me!", variable=checked, command=lambda: show_frame(quiz2_frame))
+checkbox = tk.Checkbutton(quiz1_frame, text="Check me!", variable=checked, bg="#e0f7fa", command=lambda: show_frame(quiz2_frame))
 checkbox.pack(pady=10)
 
 back_button = tk.Button(quiz1_frame, text="Exit", width=10, command=lambda: show_frame(main_frame))
@@ -71,7 +84,7 @@ quiz2_label.pack(pady=20)
 idont_button = tk.Button(quiz2_frame, text="I don't know", width=15, command=lambda: show_frame(AI_box)) 
 idont_button.pack(pady=5)
 
-Walked_button = tk.Button(quiz2_frame, text="I walked", width=15, command=open_about_page)
+Walked_button = tk.Button(quiz2_frame, text="I walked", width=15, command=lambda: show_frame(word_frame))
 Walked_button.pack(pady=5)
 
 AI_top = tk.Label(AI_box, text="AI", font=("Helvetica", 20, "bold"), bg="#ff8e8e")
@@ -83,7 +96,23 @@ AI_text.pack(pady=20)
 AI_exit_button = tk.Button(AI_box, text="Exit", width=15, command=root.destroy)
 AI_exit_button.pack(pady=10)
 
-show_frame(main_frame)
+# Word Frame
+word_label = tk.Label(word_frame, text="Write out the letters in the text box.", font=("Helvetica", 15, "bold"), bg="#d9d9d9")
+word_label.pack(pady=10)
+
+IM_photo = tk.PhotoImage(file=r"Documents\Github\The-AI-Quiz\XM.png")
+IM_label = tk.Label(word_frame, image=IM_photo, bg="#d9d9d9")
+IM_label.image = IM_photo
+IM_label.pack() 
+
+entry = tk.Entry(word_frame, width=30) 
+entry.pack(padx=10, pady=5)
+entry.insert(0, "")
+
+text1_button = tk.Button(word_frame, text="Submit", command=check_answer)
+text1_button.pack(padx=10, pady=5)
+
+#show_frame(main_frame)
 
 root.mainloop()
 
