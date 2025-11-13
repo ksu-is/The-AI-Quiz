@@ -23,10 +23,17 @@ def show_text():
 def check_answer():
     user_input_text = entry.get().strip() 
     if user_input_text == "XMYVN6W5":
-        open_about_page()
+        show_frame(click_frame)
     else:
         show_frame(AI_box)
-    
+
+def on_click(click_frame, event):
+    if click_frame.click_count < click_frame.max_clicks:
+            click_frame.click_count += 1
+            click_frame.counter_label.config(text=f"Clicks: {click_frame.click_count}")
+
+            if click_frame.click_count == click_frame.max_clicks:
+                show_frame(hair_frame)
 
 # Homepage
 root = tk.Tk()
@@ -43,9 +50,11 @@ main_frame = tk.Frame(root, bg="#f0f0f0")
 quiz1_frame = tk.Frame(root, bg="#e0f7fa")
 quiz2_frame = tk.Frame(root, bg="#e0f7fa")
 AI_box = tk.Frame(root, bg="#ff8e8e")
-word_frame = tk.Frame(root, bg="#d9d9d9")
+word_frame = tk.Frame(root, bg="#e0f7fa")
+click_frame = tk.Frame(root, bg="#e0f7fa")
+hair_frame = tk.Frame(root, bg="#e0f7fa")
 
-for frame in (main_frame, AI_box, quiz1_frame, quiz2_frame, word_frame):
+for frame in (main_frame, AI_box, quiz1_frame, quiz2_frame, word_frame, click_frame, hair_frame):
     frame.grid(row=0, column=0, sticky='nsew')
 
 show_frame(main_frame)
@@ -111,6 +120,42 @@ entry.insert(0, "")
 
 text1_button = tk.Button(word_frame, text="Submit", command=check_answer)
 text1_button.pack(padx=10, pady=5)
+
+#clicker img
+
+click_frame.click_count = 0
+click_frame.max_clicks = 12
+
+click_frame.counter_label = tk.Label(click_frame, text="Clicks: 0", font=("Arial", 14), bg="#e0f7fa")
+click_frame.counter_label.pack(pady=10)
+
+click_label = tk.Label(click_frame, text="Click the image 12 times.", font=("Helvetica", 12), bg="#e0f7fa")
+click_label.pack(pady=10)
+
+cl_photo = tk.PhotoImage (file=r"Documents\Github\The-AI-Quiz\dogpic.png")
+cl_label = tk.Label(click_frame, image=cl_photo, bg="#e0f7fa")
+cl_label.image = cl_photo
+cl_label.pack(pady=15)
+
+cl_label.bind("<Button-1>", lambda event: on_click(click_frame, event))
+
+#hair frame
+hair_label = tk.Label(hair_frame, text="What type of hair do you have?", font=("Helvetica", 14, "bold"), bg="#e0f7fa")
+hair_label.pack(pady=20)
+
+black_button = tk.Button(hair_frame, text="Black", width=15, command=lambda: show_frame(AI_box))
+black_button.pack(pady=5)
+brown_button = tk.Button(hair_frame, text="Brown", width=15, command=lambda: show_frame(AI_box))
+brown_button.pack(pady=5)
+blonde_button = tk.Button(hair_frame, text="Blonde", width=15, command=lambda: show_frame(AI_box))
+blonde_button.pack(pady=5)
+red_button = tk.Button(hair_frame, text="Red", width=15, command=lambda: show_frame(AI_box))
+red_button.pack(pady=5)
+colored_button = tk.Button(hair_frame, text="Colored", width=15, command=lambda: show_frame(AI_box))
+colored_button.pack(pady=5)
+none_button = tk.Button(hair_frame, text="None", width=15, command=lambda: show_frame(AI_box))
+none_button.pack(pady=5)
+
 
 #show_frame(main_frame)
 
