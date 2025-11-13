@@ -5,7 +5,7 @@ Stephen Cannella
 # Content
 * Intro page telling what the quiz is about.
 * (5 or 10)-question Quiz
-* Random order of questions
+* Select order of questions
 * Different types of question in answering.
 * The quiz kicks out any user who answers wrong on thinking its the AI.
 * Colors/Designs to help the application look less bland and dull.
@@ -17,3 +17,4 @@ Stephen Cannella
 * have a good interface.
 # Inspiration
 https://realpython.com/python-quiz-application/ - tutorial on how to build a quiz.
+https://www.pythontutorial.net/tkinter/ - tutorial on tkinter
