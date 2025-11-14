@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import *
 import string
 import random
+import os
 
 # Functions
 def open_about_page():
@@ -106,10 +107,13 @@ AI_exit_button = tk.Button(AI_box, text="Exit", width=15, command=root.destroy)
 AI_exit_button.pack(pady=10)
 
 # Word Frame
-word_label = tk.Label(word_frame, text="Write out the letters in the text box.", font=("Helvetica", 15, "bold"), bg="#d9d9d9")
+word_label = tk.Label(word_frame, text="Write out the letters in the text box.", font=("Helvetica", 15, "bold"), bg="#e0f7fa")
 word_label.pack(pady=10)
 
-IM_photo = tk.PhotoImage(file=r"Documents\Github\The-AI-Quiz\XM.png")
+path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "XM.png")
+IM_photo = tk.PhotoImage(file=path)
+
+#IM_photo = tk.PhotoImage(file=r"Documents\Github\The-AI-Quiz\XM.png")
 IM_label = tk.Label(word_frame, image=IM_photo, bg="#d9d9d9")
 IM_label.image = IM_photo
 IM_label.pack() 
@@ -126,13 +130,18 @@ text1_button.pack(padx=10, pady=5)
 click_frame.click_count = 0
 click_frame.max_clicks = 12
 
+
+
 click_frame.counter_label = tk.Label(click_frame, text="Clicks: 0", font=("Arial", 14), bg="#e0f7fa")
 click_frame.counter_label.pack(pady=10)
 
 click_label = tk.Label(click_frame, text="Click the image 12 times.", font=("Helvetica", 12), bg="#e0f7fa")
 click_label.pack(pady=10)
 
-cl_photo = tk.PhotoImage (file=r"Documents\Github\The-AI-Quiz\dogpic.png")
+path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "dogpic.png")
+cl_photo = tk.PhotoImage(file=path)
+
+#cl_photo = tk.PhotoImage (file=r"Documents\Github\The-AI-Quiz\dogpic.png")
 cl_label = tk.Label(click_frame, image=cl_photo, bg="#e0f7fa")
 cl_label.image = cl_photo
 cl_label.pack(pady=15)
@@ -141,7 +150,7 @@ cl_label.bind("<Button-1>", lambda event: on_click(click_frame, event))
 
 #hair frame
 hair_label = tk.Label(hair_frame, text="What type of hair do you have?", font=("Helvetica", 14, "bold"), bg="#e0f7fa")
-hair_label.pack(pady=20)
+hair_label.pack(pady=10)
 
 black_button = tk.Button(hair_frame, text="Black", width=15, command=lambda: show_frame(AI_box))
 black_button.pack(pady=5)
@@ -153,56 +162,13 @@ red_button = tk.Button(hair_frame, text="Red", width=15, command=lambda: show_fr
 red_button.pack(pady=5)
 colored_button = tk.Button(hair_frame, text="Colored", width=15, command=lambda: show_frame(AI_box))
 colored_button.pack(pady=5)
+bald_button = tk.Button(hair_frame, text="Bald", width=15, command=lambda: show_frame(AI_box))
+bald_button.pack(pady=5)
 none_button = tk.Button(hair_frame, text="None", width=15, command=lambda: show_frame(AI_box))
 none_button.pack(pady=5)
 
 
-#show_frame(main_frame)
+
 
 root.mainloop()
-
-
-
-# Question 1
-#answer = input("When was the first known use of the word 'quiz'? ")
-#if answer == "1781":
-    #print("Correct!")
-#else:
-    #print(f"The answer is '1781', not {answer!r}")
-
-# Question 2
-#answer = input("Which built-in function can get information from the user? ")
-#if answer == "input":
-    #print("Correct!")
-#else:
-   # print(f"The answer is 'input', not {answer!r}")
-
-# Question 3
-#QUESTIONS = {
-   # "When was the first known use of the word 'quiz'": [
-      #  "1781", "1771", "1871", "1881"
-  #  ],
-  #  "Which built-in function can get information from the user": [
-  #      "input", "get", "print", "write"
-  #  ],
-   # "Which keyword do you use to loop over a given list of elements": [
-    #    "for", "while", "each", "loop"
-   # ],
-   # "What's the purpose of the built-in zip() function": [
-    #    "To iterate over two or more sequences at the same time",
-     #   "To combine several strings into one",
-     #   "To compress several files into one archive",
-     #   "To get information from the user",
-  #  ],
-#}
-#for question, alternatives in QUESTIONS.items():
-   # correct_answer = alternatives[0]
-  #  for alternative in sorted(alternatives):
-    #    print(f"  - {alternative}")
-
-   # answer = input(f"{question}? ")
-   # if answer == correct_answer:
-    #    print("Correct!")
-    #else:
-    #    print(f"The answer is {correct_answer!r}, not {answer!r}")
 
