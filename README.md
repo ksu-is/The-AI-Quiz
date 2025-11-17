@@ -3,13 +3,15 @@ A Python application to test users on verifying if they are human or AI. It give
 # Programmer
 Stephen Cannella
 # Content
+* application works with an A GUI, or graphical user interface
 * Intro page telling what the quiz is about.
 * (5 or 10)-question Quiz
 * Select order of questions
 * Different types of question in answering.
 * The quiz kicks out any user who answers wrong on thinking its the AI.
 * Colors/Designs to help the application look less bland and dull.
-* Ending page verifying the user is a human. 
+* Ending page verifying the user is a human.
+* friendly interface to be welcoming to all users.
 # Goals
 * Make sure application runs properly
 * Test the quiz on an actual AI
