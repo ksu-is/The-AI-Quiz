@@ -54,8 +54,10 @@ AI_box = tk.Frame(root, bg="#ff8e8e")
 word_frame = tk.Frame(root, bg="#e0f7fa")
 click_frame = tk.Frame(root, bg="#e0f7fa")
 hair_frame = tk.Frame(root, bg="#e0f7fa")
+end_frame = tk.Frame(root, bg="#adffb4")
+lie_frame = tk.Frame(root, bg="#e0f7fa")
 
-for frame in (main_frame, AI_box, quiz1_frame, quiz2_frame, word_frame, click_frame, hair_frame):
+for frame in (main_frame, AI_box, quiz1_frame, quiz2_frame, word_frame, click_frame, hair_frame, end_frame, lie_frame):
     frame.grid(row=0, column=0, sticky='nsew')
 
 show_frame(main_frame)
@@ -77,11 +79,9 @@ exit_button = tk.Button(main_frame, text="Exit", width=15, command=root.destroy)
 exit_button.pack(pady=5)
 
 # Quiz1 Buttons
-quiz1_label = tk.Label(quiz1_frame, text="I'm not a robot:", font=("Helvetica", 14, "bold"), bg="#e0f7fa")
-quiz1_label.pack(pady=20)
 
 checked = tk.BooleanVar()
-checkbox = tk.Checkbutton(quiz1_frame, text="Check me!", variable=checked, bg="#e0f7fa", command=lambda: show_frame(quiz2_frame))
+checkbox = tk.Checkbutton(quiz1_frame, text="I'm not a robot", variable=checked, font=("Helvetica", 13), bg="#9af5ff", command=lambda: show_frame(quiz2_frame))
 checkbox.pack(pady=10)
 
 back_button = tk.Button(quiz1_frame, text="Exit", width=10, command=lambda: show_frame(main_frame))
@@ -107,7 +107,7 @@ AI_exit_button = tk.Button(AI_box, text="Exit", width=15, command=root.destroy)
 AI_exit_button.pack(pady=10)
 
 # Word Frame
-word_label = tk.Label(word_frame, text="Write out the letters in the text box.", font=("Helvetica", 15, "bold"), bg="#e0f7fa")
+word_label = tk.Label(word_frame, text="Write out what you see in the text box.", font=("Helvetica", 15, "bold"), bg="#e0f7fa")
 word_label.pack(pady=10)
 
 path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "XM.png")
@@ -131,7 +131,6 @@ click_frame.click_count = 0
 click_frame.max_clicks = 12
 
 
-
 click_frame.counter_label = tk.Label(click_frame, text="Clicks: 0", font=("Arial", 14), bg="#e0f7fa")
 click_frame.counter_label.pack(pady=10)
 
@@ -149,24 +148,36 @@ cl_label.pack(pady=15)
 cl_label.bind("<Button-1>", lambda event: on_click(click_frame, event))
 
 #hair frame
-hair_label = tk.Label(hair_frame, text="What type of hair do you have?", font=("Helvetica", 14, "bold"), bg="#e0f7fa")
+hair_label = tk.Label(hair_frame, text="What type of hair color do you have?", font=("Helvetica", 14, "bold"), bg="#e0f7fa")
 hair_label.pack(pady=10)
 
-black_button = tk.Button(hair_frame, text="Black", width=15, command=lambda: show_frame(AI_box))
+black_button = tk.Button(hair_frame, text="Black", width=15, command=lambda: show_frame(lie_frame))
 black_button.pack(pady=5)
-brown_button = tk.Button(hair_frame, text="Brown", width=15, command=lambda: show_frame(AI_box))
+brown_button = tk.Button(hair_frame, text="Brown", width=15, command=lambda: show_frame(lie_frame))
 brown_button.pack(pady=5)
-blonde_button = tk.Button(hair_frame, text="Blonde", width=15, command=lambda: show_frame(AI_box))
+blonde_button = tk.Button(hair_frame, text="Blonde", width=15, command=lambda: show_frame(lie_frame))
 blonde_button.pack(pady=5)
-red_button = tk.Button(hair_frame, text="Red", width=15, command=lambda: show_frame(AI_box))
+red_button = tk.Button(hair_frame, text="Red", width=15, command=lambda: show_frame(lie_frame))
 red_button.pack(pady=5)
-colored_button = tk.Button(hair_frame, text="Colored", width=15, command=lambda: show_frame(AI_box))
+colored_button = tk.Button(hair_frame, text="Colored", width=15, command=lambda: show_frame(lie_frame))
 colored_button.pack(pady=5)
-bald_button = tk.Button(hair_frame, text="Bald", width=15, command=lambda: show_frame(AI_box))
+bald_button = tk.Button(hair_frame, text="Bald", width=15, command=lambda: show_frame(lie_frame))
 bald_button.pack(pady=5)
 none_button = tk.Button(hair_frame, text="None", width=15, command=lambda: show_frame(AI_box))
 none_button.pack(pady=5)
 
+# End Frame
+end_label = tk.Label(end_frame, text="Congratulations! You are Human!", font=("Helvetica", 16, "bold"), bg="#adffb4")
+end_label.pack(pady=20)
+
+#lie frame
+lie_label = tk.Label(lie_frame, text="Have you lied to anyone?", font=("Helvetica", 14, "bold"), bg="#e0f7fa")
+lie_label.pack(pady=20)
+
+yes_button = tk.Button(lie_frame, text="Yes", width=15, command=lambda: show_frame(end_frame))
+yes_button.pack(pady=5)
+no_button = tk.Button(lie_frame, text="No", width=15, command=lambda: show_frame(AI_box))
+no_button.pack(pady=5)
 
 
 
