@@ -46,6 +46,8 @@ root.configure(bg="#f0f0f0")
 root.grid_rowconfigure(0, weight=1)
 root.grid_columnconfigure(0, weight=1)
 
+root.resizable(False, False)
+
 # Frames
 main_frame = tk.Frame(root, bg="#f0f0f0")
 quiz1_frame = tk.Frame(root, bg="#e0f7fa")
@@ -97,11 +99,16 @@ idont_button.pack(pady=5)
 Walked_button = tk.Button(quiz2_frame, text="I walked", width=15, command=lambda: show_frame(word_frame))
 Walked_button.pack(pady=5)
 
+# AI Box
+
 AI_top = tk.Label(AI_box, text="AI", font=("Helvetica", 20, "bold"), bg="#ff8e8e")
 AI_top.pack(pady=10)
 
 AI_text = tk.Label(AI_box, text="You are an AI, you must leave!", font=("Helvetica", 14, "bold"), bg="#ff8e8e")
-AI_text.pack(pady=20)
+AI_text.pack(pady=10)
+
+robot_label = tk.Label(AI_box, text="🤖", font=("Helvetica", 30), bg="#ff8e8e")
+robot_label.pack(pady=10)
 
 AI_exit_button = tk.Button(AI_box, text="Exit", width=15, command=root.destroy)
 AI_exit_button.pack(pady=10)
@@ -167,8 +174,17 @@ none_button = tk.Button(hair_frame, text="None", width=15, command=lambda: show_
 none_button.pack(pady=5)
 
 # End Frame
-end_label = tk.Label(end_frame, text="Congratulations! You are Human!", font=("Helvetica", 16, "bold"), bg="#adffb4")
-end_label.pack(pady=20)
+Human_label = tk.Label(end_frame, text="Human", font=("Helvetica", 20, "bold"), bg="#adffb4")
+Human_label.pack(pady=10)
+
+end_label = tk.Label(end_frame, text="Congratulations! You are Human!", font=("Helvetica", 14, "bold"), bg="#adffb4")
+end_label.pack(pady=10)
+
+end2_label = tk.Label(end_frame, text="😄", font=("Helvetica", 30), bg="#adffb4")
+end2_label.pack(pady=10)
+
+leave_button = tk.Button(end_frame, text="Exit", width=15, command=root.destroy)
+leave_button.pack(pady=10)
 
 #lie frame
 lie_label = tk.Label(lie_frame, text="Have you lied to anyone?", font=("Helvetica", 14, "bold"), bg="#e0f7fa")
