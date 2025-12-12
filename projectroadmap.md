@@ -12,10 +12,10 @@
 - [x] create a homepage
 - [x] create a page for each question
 - [x] create a incorrect page
-- [ ] show an icon when user gets something correct
-- [ ] create an ending page
+- [x] show an icon when user gets something correct
+- [x] create an ending page
 - [x] add designs/color to give it a good interface.
 # Last
-- [ ] Test the Quiz
-- [ ] edit and make changes if neeeded
-- [ ] at anything extra to help the quiz
+- [x] Test the Quiz
+- [x] edit and make changes if neeeded
+- [x] at anything extra to help the quiz
