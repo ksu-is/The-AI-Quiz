@@ -6,8 +6,8 @@
 # Features
 - [x] Import files that will help the quiz function.
 - [x] add varity to each and question
-- [ ] runs the questions properly for each new user
-- [ ] make it User-Friendly
+- [x] runs the questions properly for each new user
+- [x] make it User-Friendly
 - [x] Functions are important
 - [x] create a homepage
 - [x] create a page for each question
