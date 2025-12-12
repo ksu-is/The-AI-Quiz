@@ -2,10 +2,10 @@ from tkinter import messagebox
 import tkinter as tk
 from tkinter import *
 import string
-import random
 import os
 
 # Functions
+
 def open_about_page():
     messagebox.showinfo("About", "A Python application to test users on verifying if they are Human or AI.")
 
@@ -37,11 +37,11 @@ def on_click(click_frame, event):
                 show_frame(hair_frame)
 
 # Homepage
+
 root = tk.Tk()
 root.title("The-AI-Quiz")
 root.geometry("400x300")
 root.configure(bg="#f0f0f0")
-
 
 root.grid_rowconfigure(0, weight=1)
 root.grid_columnconfigure(0, weight=1)
@@ -49,6 +49,7 @@ root.grid_columnconfigure(0, weight=1)
 root.resizable(False, False)
 
 # Frames
+
 main_frame = tk.Frame(root, bg="#f0f0f0")
 quiz1_frame = tk.Frame(root, bg="#e0f7fa")
 quiz2_frame = tk.Frame(root, bg="#e0f7fa")
@@ -65,6 +66,7 @@ for frame in (main_frame, AI_box, quiz1_frame, quiz2_frame, word_frame, click_fr
 show_frame(main_frame)
 
 # Main Buttons
+
 title_label = tk.Label(main_frame, text="The-AI-Quiz!", font=("Helvetica", 18, "bold"), bg="#f0f0f0")
 title_label.pack(pady=20)
 
@@ -80,7 +82,7 @@ about_button.pack(pady=5)
 exit_button = tk.Button(main_frame, text="Exit", width=15, command=root.destroy)
 exit_button.pack(pady=5)
 
-# Quiz1 Buttons
+# Quiz1 Button
 
 checked = tk.BooleanVar()
 checkbox = tk.Checkbutton(quiz1_frame, text="I'm not a robot", variable=checked, font=("Helvetica", 13), bg="#9af5ff", command=lambda: show_frame(quiz2_frame))
@@ -89,7 +91,8 @@ checkbox.pack(pady=10)
 back_button = tk.Button(quiz1_frame, text="Exit", width=10, command=lambda: show_frame(main_frame))
 back_button.pack(pady=10)
 
-# Quiz2 Buttons
+# Quiz2 Button
+
 quiz2_label = tk.Label(quiz2_frame, text="What did you do yesterday?", font=("Helvetica", 14, "bold"), bg="#e0f7fa")
 quiz2_label.pack(pady=20)
 
@@ -99,7 +102,7 @@ idont_button.pack(pady=5)
 Walked_button = tk.Button(quiz2_frame, text="I walked", width=15, command=lambda: show_frame(word_frame))
 Walked_button.pack(pady=5)
 
-# AI Box
+# AI Box ending frame
 
 AI_top = tk.Label(AI_box, text="AI", font=("Helvetica", 20, "bold"), bg="#ff8e8e")
 AI_top.pack(pady=10)
@@ -113,7 +116,8 @@ robot_label.pack(pady=10)
 AI_exit_button = tk.Button(AI_box, text="Exit", width=15, command=root.destroy)
 AI_exit_button.pack(pady=10)
 
-# Word Frame
+# Word Frame Question
+
 word_label = tk.Label(word_frame, text="Write out what you see in the text box.", font=("Helvetica", 15, "bold"), bg="#e0f7fa")
 word_label.pack(pady=10)
 
@@ -137,7 +141,6 @@ text1_button.pack(padx=10, pady=5)
 click_frame.click_count = 0
 click_frame.max_clicks = 12
 
-
 click_frame.counter_label = tk.Label(click_frame, text="Clicks: 0", font=("Arial", 14), bg="#e0f7fa")
 click_frame.counter_label.pack(pady=10)
 
@@ -155,6 +158,7 @@ cl_label.pack(pady=15)
 cl_label.bind("<Button-1>", lambda event: on_click(click_frame, event))
 
 #hair frame
+
 hair_label = tk.Label(hair_frame, text="What type of hair color do you have?", font=("Helvetica", 14, "bold"), bg="#e0f7fa")
 hair_label.pack(pady=10)
 
@@ -173,7 +177,8 @@ bald_button.pack(pady=5)
 none_button = tk.Button(hair_frame, text="None", width=15, command=lambda: show_frame(AI_box))
 none_button.pack(pady=5)
 
-# End Frame
+# Human End Frame
+
 Human_label = tk.Label(end_frame, text="Human", font=("Helvetica", 20, "bold"), bg="#adffb4")
 Human_label.pack(pady=10)
 
@@ -187,6 +192,7 @@ leave_button = tk.Button(end_frame, text="Exit", width=15, command=root.destroy)
 leave_button.pack(pady=10)
 
 #lie frame
+
 lie_label = tk.Label(lie_frame, text="Have you lied to anyone?", font=("Helvetica", 14, "bold"), bg="#e0f7fa")
 lie_label.pack(pady=20)
 
@@ -194,7 +200,6 @@ yes_button = tk.Button(lie_frame, text="Yes", width=15, command=lambda: show_fra
 yes_button.pack(pady=5)
 no_button = tk.Button(lie_frame, text="No", width=15, command=lambda: show_frame(AI_box))
 no_button.pack(pady=5)
-
 
 
 root.mainloop()
